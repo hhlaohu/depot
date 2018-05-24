@@ -1,0 +1,93 @@
+h1,h2,h3,h4,h5,h6{margin:0; padding:0}
+.mtop5{margin-top: 5px;}
+.mtop10{margin-top: 10px;}
+.mtop20{margin-top: 20px;}
+.mbottom10{margin-bottom: 15px;}
+.mbottom15{margin-bottom: 15px;}
+.mbottom20{margin-bottom: 20px;}
+.mbottom30{margin-bottom: 30px;}
+.color-red{color:#f22b2b}
+.color-green{color:#37a800}
+.color-blue{color:#27adfa}
+.color-blueorange{color:#f6ce15}
+.aligncenter{text-align: center;}
+input,textarea{font-size: 12px; font-family: "microsoft yahei";}
+
+.page-wrap{padding:20px;}
+
+.table-xixian{width:100%;border-collapse:collapse;}
+.table-xixian td,.table-xixian th{border:1px solid #dedede; padding: 15px;}
+
+/*Borrowing information - tab1*/
+.look-order-main{display: none; margin-top: 20px;}
+
+/*Borrowing information - tab2*/
+.look-order-tabtit{height:36px; border-bottom:1px solid #3278b6}
+.look-order-tabtit .o-tabtit{height: 36px; line-height: 36px; border:none; outline: none; border:none; cursor: pointer; padding: 0 20px; float: left; display: block; margin-right: 5px; background:#fff; border-top-left-radius: 3px; border-top-right-radius: 3px;}
+.look-order-tabtit .o-tabtit.active{color:#fff;  background: #3278b6;}
+	
+.order-listbox{width:100%;padding-bottom: 20px;}
+.order-listbox1{margin-top: 30px;}
+.order-listbox2{margin-top: 10px;}
+.order-h2tit{height: 44px; line-height: 44px; text-indent: 20px; font-size: 14px; font-weight: bold; background: #ececec;}
+.fine-table{width:100%;border-collapse:collapse;}
+.fine-table td,.fine-table th{border-bottom:1px solid #eeeeee; padding: 20px 0 20px 20px;text-align:left;}
+.fine-tableborderall{width:100%;border-collapse:collapse;}
+.fine-tableborderall td,.fine-tableborderall th{border:1px solid #eeeeee; padding: 20px 20px 20px 20px;text-align:left;}
+.fine-table td.aligncenter,.fine-table th.aligncenter,.fine-tableborderall td.aligncenter,.fine-tableborderall th.aligncenter{text-align: center;}
+.fine-tableth{width:100%; height: 44px; line-height: 44px; text-indent: 20px; font-size: 14px; font-weight: bold; background: #ececec;}
+.orderid-photo{margin-top: 20px; padding: 20px 0 20px 30px;}
+.orderid-photo-box{width:210px; float: left; display: inline; margin-right: 40px; text-align: center;} 
+.orderid-photo-box .orderid-photo-img{width:208px; height: 208px; border: 1px dotted #e1e1e1; background:url(../images/orderid-photo-img.jpg) #f9f9f9 center center  no-repeat;}
+.orderid-photo-box .orderid-photo-tit{margin-top:14px;}
+.orderid-photo-box .orderid-photo-btn{width:120px; height: 36px; line-height: 36px; display: block; margin: 14px auto 0; color:#fff; background: #78c2f5; -webkit-border-radius: 4px; moz-border-radius: 4px; -ms-border-radius: 4px; border-radius: 4px;}
+
+.ord-picwrap{padding:10px 30px 30px; border-left:1px solid #ececec; border-right:1px solid #ececec; border-bottom:1px solid #ececec;}
+.ord-picwrap-h2{height:30px; line-height: 30px; margin: 0 0 5px;}
+.ord-picwrap-list{border-bottom:1px dotted #ececec; padding-bottom: 30px;}
+.ord-picwrap-list:last-child{border-bottom: none; padding-bottom: 10px;}
+.ord-piclist-box{width:210px; height: 210px; float: left;; display: inline; margin-right: 30px; border: 1px dotted #ebebeb; background:url(../images/orderid-photo-img.jpg) #f9f9f9 center center  no-repeat;}
+.body-yanzhentit{height:40px; line-height: 40px; margin-bottom:10px;}
+.body-yanzhenimg{width:210px; height: 210px; border: 1px dotted #ebebeb; background:url(../images/orderid-photo-img.jpg) #f9f9f9 center center  no-repeat;}
+.body-yanzhendes{width:210px; height: 32px; line-height: 32px; margin-top:10px; text-align: center; color:#bd986b; background: #fff3e3;}
+.bo-compared-resault{width:300px;height:30px; line-height: 30px; color:#333; text-indent: 10px; background: #f9f9f9;}
+.bo-comresault-list{line-height: 34px; margin-top: 10px; text-indent: 10px;}
+
+.report-h2tit{font-size: 24px; font-weight: bold; text-align: center; padding: 24px 0;}
+.report-h2tit-date{text-align: right; margin-right: 10%; margin-bottom: 20px;}
+.report-btit{ color:#fff; font-size:18px; height: 42px; line-height: 42px; padding-left:10px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; background: #0081c2;}
+.report-btit1{width:146px;}
+.rep-yanzhendes{margin-top:-50px;}
+
+.report-namelist{position: relative;}
+.namelist-button{margin-bottom: 50px;}
+.namelist-button .namelist-href{width:100px; height: 32px; line-height: 32px; color:#fff; float: right; margin-right: 10%; text-align: center; cursor: pointer; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; background: #858585;}
+.conclusion-box{padding: 10px 20px;}
+.conclusion-box .conclusion-btit{height: 30px; line-height: 30px;}
+.conclusion-btxt{width:80%}
+.conclusion-btxt .report-textput{width:98%; padding: 1%; border:1px solid #dcdcdc}
+.conclusion-btxt .report-textput:focus,.report-textinput:focus{border:1px solid #4ab0e4}
+.report-textinput{width:160px; height: 34px; line-height: 34px; padding: 0 1%; border:1px solid #dcdcdc}
+.border-bottom{padding-bottom: 30px; border-bottom:1px dashed #2a2a2a}
+.report-formbutton{width: 218px; height: 60px; border: none; color:#fff; font-size: 24px; margin: 0 20px 20px 20px; cursor: pointer; background: #0081c2;}
+
+/*loan person, conpany 2017.6.1*/
+.loan-conpantlist{padding: 24px 0 0 59px;}
+.loan-conpantlist .conpantlist-photo-box{width:208px; height: 208px; float: left; margin-right: 30px; margin-bottom: 30px; border: 1px dotted #e1e1e1; background:url(../images/orderid-photo-img.jpg) #f9f9f9 center center  no-repeat;}
+
+.s-appname-list{}
+.s-appname-list .s-app-namebox{width:16.66%; height: 60px; line-height: 60px; display: block; float: left; border-bottom: 1px solid #eee; text-indent: 20px;}
+
+/*order manage picturedata add*/
+.picturedata-wrap{}
+.picturedata-wrap .picturedata-box{width:142px; float: left; display: inline; margin-right: 20px; margin-bottom: 20px; text-align: center;}
+.picturedata-box .picturedata-img{width: 140px; height: 140px; border: 1px dotted #e1e1e1;}
+.picturedata-box .picturedata-tit{display: block; margin-top: 14px;}
+.picturedata-newaddbox{float: left; display: inline; margin-right: 20px;}
+.picturedata-add{width:140px; height: 140px; border: 1px dotted #e1e1e1; text-align: center; float: left; display: inline; cursor: pointer; background: #f1f1f1;}
+.picturedata-add:hover{background:#ebeaea}
+.picturedata-add span{font-size: 60px; color:#b1b1b1; display: block; margin-top: 30px;}
+.orderpic-submit{width:90px; height:34px; float: left; border:none; color:#fff; outline:none; cursor:pointer; border-radius:3px; margin:55px 0px 0px 30px; background:#4bb1e1;}
+
+/*webupload fix*/
+.webuploader-pick{width:100%;}

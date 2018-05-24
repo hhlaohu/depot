@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--这里使用的是数据库properties配置文件与当前配置文件于同级目录-->
+    <properties resource="jdbc.properties"/>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置-->
+    <classPathEntry location="${db.driverLocation}"/>
+
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection
+                driverClass="${db.driverClassName}"
+                connectionURL="${db.url}"
+                userId="${db.username}"
+                password="${db.password}">
+        </jdbcConnection>
+
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.yiya.bean" targetProject="./src/main/java">
+            <!--<javaModelGenerator targetPackage="com.ypojobean" targetProject="./src">-->
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <!--<sqlMapGenerator targetPackage="com.yiya.mybatis" targetProject="./src/main/java">-->
+        <sqlMapGenerator targetPackage="mybatis" targetProject="./src/main/resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.yiya.mapper" targetProject="./src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+        <!--指定数据库表 -->
+
+        <!--&lt;!&ndash;4.1 物业公司表&ndash;&gt;-->
+        <!--<table tableName="tab_property_company">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--4.2 停车场表-->
+        <!--<table tableName="tab_depot">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.3 停车场类型表&ndash;&gt;-->
+        <!--<table tableName="tab_depot_type">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.4 停车区域表&ndash;&gt;-->
+        <!--<table tableName="tab_depot_area">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.5 道口表&ndash;&gt;-->
+        <!--<table tableName="tab_access">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.6 设备表&ndash;&gt;-->
+        <!--<table tableName="tab_equipment">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.7 岗亭表&ndash;&gt;-->
+        <!--<table tableName="tab_sentry">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.8 车辆类型表&ndash;&gt;-->
+        <!--<table tableName="tab_vehicle_type">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.9 运营参数表&ndash;&gt;-->
+        <!--<table tableName="tab_parameters">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--4.10 长租费率表-->
+        <!--<table tableName="tab_long_rate">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--4.11 短租费率表-->
+        <!--<table tableName="tab_short_rate">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--<generatedKey column="short_rate_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--4.12 短租费率时间段表-->
+        <!--<table tableName="tab_short_rate_duration">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+
+
+        <!--4.13 长租车辆表-->
+        <!--<table tableName="tab_long_vehicle">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+
+
+
+        <!--4.14 车牌属地表-->
+        <table tableName="tab_pre_license_plate">
+        <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!--4.15 岗亭用户表-->
+        <table tableName="tab_sentry_user">
+        <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!--4.21地区代码表-->
+        <table tableName="tab_area">
+        <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!--4.22 出入场车辆记录表-->
+        <table tableName="tab_passageway_record">
+        <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!--4.23 出入场车辆照片表-->
+        <table tableName="tab_passageway_picture">
+        <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!--4.24 在场车辆表-->
+        <table tableName="tab_onhand_vehicle">
+        <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!--&lt;!&ndash;4.25 历史车辆表&ndash;&gt;-->
+        <!--<table tableName="tab_history_vehicle">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.26 临停费用明细记录表&ndash;&gt;-->
+        <!--<table tableName="tab_short_fees_record">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.27 临停支付记录表&ndash;&gt;-->
+        <!--<table tableName="tab_short_pay_record">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--4.28 优惠券模板表-->
+        <!--<table tableName="tab_coupon_template">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--4.29 商家表-->
+        <!--<table tableName="tab_merchant">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.30 优惠券发放表&ndash;&gt;-->
+        <!--<table tableName="tab_merchant_coupon">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.31 长租支付记录表&ndash;&gt;-->
+        <!--<table tableName="tab_long_pay_record">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.32 停车场授权表&ndash;&gt;-->
+        <!--<table tableName="tab_depot_authorize">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.33 岗亭端授权表&ndash;&gt;-->
+        <!--<table tableName="tab_sentry_authorize">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.34 白名单表&ndash;&gt;-->
+        <!--<table tableName="tab_white_list">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.35 黑名单表&ndash;&gt;-->
+        <!--<table tableName="tab_black_list">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;4.36 车位表&ndash;&gt;-->
+        <!--<table tableName="tab_carport">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--4.37 岗亭-道口表-->
+        <!--<table tableName="tab_sentry_access">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+
+        <!--车牌识别图片表-->
+        <!--<table tableName="tab_plate_pic">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--上报交通局数据记录表-->
+        <!--<table tableName="tab_report_rta_record">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--4.42节假日表-->
+        <!--<table tableName="tab_holidays_list">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--4.41临停车辆区域停留记录表-->
+        <!--<table tableName="tab_area_stay_record">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <table tableName="tab_free_in_out_list">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

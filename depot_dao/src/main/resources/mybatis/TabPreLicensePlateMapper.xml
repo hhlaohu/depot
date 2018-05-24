@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiya.mapper.TabPreLicensePlateMapper" >
+  <resultMap id="BaseResultMap" type="com.yiya.bean.TabPreLicensePlate" >
+    <id column="pre_license_plate_id" property="pre_license_plate_id" jdbcType="INTEGER" />
+    <result column="pre_name" property="pre_name" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pre_license_plate_id, pre_name, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiya.bean.TabPreLicensePlateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tab_pre_license_plate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tab_pre_license_plate
+    where pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tab_pre_license_plate
+    where pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yiya.bean.TabPreLicensePlateExample" >
+    delete from tab_pre_license_plate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yiya.bean.TabPreLicensePlate" >
+    insert into tab_pre_license_plate (pre_license_plate_id, pre_name, remark
+      )
+    values (#{pre_license_plate_id,jdbcType=INTEGER}, #{pre_name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiya.bean.TabPreLicensePlate" >
+    insert into tab_pre_license_plate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pre_license_plate_id != null" >
+        pre_license_plate_id,
+      </if>
+      <if test="pre_name != null" >
+        pre_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pre_license_plate_id != null" >
+        #{pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="pre_name != null" >
+        #{pre_name,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yiya.bean.TabPreLicensePlateExample" resultType="java.lang.Integer" >
+    select count(*) from tab_pre_license_plate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tab_pre_license_plate
+    <set >
+      <if test="record.pre_license_plate_id != null" >
+        pre_license_plate_id = #{record.pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.pre_name != null" >
+        pre_name = #{record.pre_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tab_pre_license_plate
+    set pre_license_plate_id = #{record.pre_license_plate_id,jdbcType=INTEGER},
+      pre_name = #{record.pre_name,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiya.bean.TabPreLicensePlate" >
+    update tab_pre_license_plate
+    <set >
+      <if test="pre_name != null" >
+        pre_name = #{pre_name,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiya.bean.TabPreLicensePlate" >
+    update tab_pre_license_plate
+    set pre_name = #{pre_name,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER}
+  </update>
+</mapper>

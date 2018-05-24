@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiya.mapper.TabPassagewayPictureMapper" >
+  <resultMap id="BaseResultMap" type="com.yiya.bean.TabPassagewayPicture" >
+    <id column="passageway_pic_id" property="passageway_pic_id" jdbcType="BIGINT" />
+    <result column="passageway_type" property="passageway_type" jdbcType="SMALLINT" />
+    <result column="passageway_record_id" property="passageway_record_id" jdbcType="BIGINT" />
+    <result column="pic_score" property="pic_score" jdbcType="DOUBLE" />
+    <result column="pic_address" property="pic_address" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    passageway_pic_id, passageway_type, passageway_record_id, pic_score, pic_address
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiya.bean.TabPassagewayPictureExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tab_passageway_picture
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tab_passageway_picture
+    where passageway_pic_id = #{passageway_pic_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tab_passageway_picture
+    where passageway_pic_id = #{passageway_pic_id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yiya.bean.TabPassagewayPictureExample" >
+    delete from tab_passageway_picture
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yiya.bean.TabPassagewayPicture" >
+    insert into tab_passageway_picture (passageway_pic_id, passageway_type, 
+      passageway_record_id, pic_score, pic_address
+      )
+    values (#{passageway_pic_id,jdbcType=BIGINT}, #{passageway_type,jdbcType=SMALLINT}, 
+      #{passageway_record_id,jdbcType=BIGINT}, #{pic_score,jdbcType=DOUBLE}, #{pic_address,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiya.bean.TabPassagewayPicture" >
+    insert into tab_passageway_picture
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="passageway_pic_id != null" >
+        passageway_pic_id,
+      </if>
+      <if test="passageway_type != null" >
+        passageway_type,
+      </if>
+      <if test="passageway_record_id != null" >
+        passageway_record_id,
+      </if>
+      <if test="pic_score != null" >
+        pic_score,
+      </if>
+      <if test="pic_address != null" >
+        pic_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="passageway_pic_id != null" >
+        #{passageway_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="passageway_type != null" >
+        #{passageway_type,jdbcType=SMALLINT},
+      </if>
+      <if test="passageway_record_id != null" >
+        #{passageway_record_id,jdbcType=BIGINT},
+      </if>
+      <if test="pic_score != null" >
+        #{pic_score,jdbcType=DOUBLE},
+      </if>
+      <if test="pic_address != null" >
+        #{pic_address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yiya.bean.TabPassagewayPictureExample" resultType="java.lang.Integer" >
+    select count(*) from tab_passageway_picture
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tab_passageway_picture
+    <set >
+      <if test="record.passageway_pic_id != null" >
+        passageway_pic_id = #{record.passageway_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.passageway_type != null" >
+        passageway_type = #{record.passageway_type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.passageway_record_id != null" >
+        passageway_record_id = #{record.passageway_record_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.pic_score != null" >
+        pic_score = #{record.pic_score,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pic_address != null" >
+        pic_address = #{record.pic_address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tab_passageway_picture
+    set passageway_pic_id = #{record.passageway_pic_id,jdbcType=BIGINT},
+      passageway_type = #{record.passageway_type,jdbcType=SMALLINT},
+      passageway_record_id = #{record.passageway_record_id,jdbcType=BIGINT},
+      pic_score = #{record.pic_score,jdbcType=DOUBLE},
+      pic_address = #{record.pic_address,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiya.bean.TabPassagewayPicture" >
+    update tab_passageway_picture
+    <set >
+      <if test="passageway_type != null" >
+        passageway_type = #{passageway_type,jdbcType=SMALLINT},
+      </if>
+      <if test="passageway_record_id != null" >
+        passageway_record_id = #{passageway_record_id,jdbcType=BIGINT},
+      </if>
+      <if test="pic_score != null" >
+        pic_score = #{pic_score,jdbcType=DOUBLE},
+      </if>
+      <if test="pic_address != null" >
+        pic_address = #{pic_address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where passageway_pic_id = #{passageway_pic_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiya.bean.TabPassagewayPicture" >
+    update tab_passageway_picture
+    set passageway_type = #{passageway_type,jdbcType=SMALLINT},
+      passageway_record_id = #{passageway_record_id,jdbcType=BIGINT},
+      pic_score = #{pic_score,jdbcType=DOUBLE},
+      pic_address = #{pic_address,jdbcType=VARCHAR}
+    where passageway_pic_id = #{passageway_pic_id,jdbcType=BIGINT}
+  </update>
+</mapper>

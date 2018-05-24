@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiya.mapper.TabOnhandVehicleMapper" >
+  <resultMap id="BaseResultMap" type="com.yiya.bean.TabOnhandVehicle" >
+    <id column="onhand_vehicle_id" property="onhand_vehicle_id" jdbcType="BIGINT" />
+    <result column="access_id" property="access_id" jdbcType="INTEGER" />
+    <result column="pre_license_plate_id" property="pre_license_plate_id" jdbcType="INTEGER" />
+    <result column="license_plate" property="license_plate" jdbcType="VARCHAR" />
+    <result column="entry_time" property="entry_time" jdbcType="TIMESTAMP" />
+    <result column="park_type" property="park_type" jdbcType="SMALLINT" />
+    <result column="vehicle_type_id" property="vehicle_type_id" jdbcType="INTEGER" />
+    <result column="sentry_user_id" property="sentry_user_id" jdbcType="INTEGER" />
+    <result column="entry_pic_id" property="entry_pic_id" jdbcType="BIGINT" />
+    <result column="exit_pic_id" property="exit_pic_id" jdbcType="BIGINT" />
+    <result column="is_payment" property="is_payment" jdbcType="SMALLINT" />
+    <result column="pay_time" property="pay_time" jdbcType="TIMESTAMP" />
+    <result column="real_charges" property="real_charges" jdbcType="DOUBLE" />
+    <result column="due_charges" property="due_charges" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    onhand_vehicle_id, access_id, pre_license_plate_id, license_plate, entry_time, park_type, 
+    vehicle_type_id, sentry_user_id, entry_pic_id, exit_pic_id, is_payment, pay_time, 
+    real_charges, due_charges
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiya.bean.TabOnhandVehicleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tab_onhand_vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tab_onhand_vehicle
+    where onhand_vehicle_id = #{onhand_vehicle_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tab_onhand_vehicle
+    where onhand_vehicle_id = #{onhand_vehicle_id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yiya.bean.TabOnhandVehicleExample" >
+    delete from tab_onhand_vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yiya.bean.TabOnhandVehicle" >
+    insert into tab_onhand_vehicle (onhand_vehicle_id, access_id, pre_license_plate_id, 
+      license_plate, entry_time, park_type, 
+      vehicle_type_id, sentry_user_id, entry_pic_id, 
+      exit_pic_id, is_payment, pay_time, 
+      real_charges, due_charges)
+    values (#{onhand_vehicle_id,jdbcType=BIGINT}, #{access_id,jdbcType=INTEGER}, #{pre_license_plate_id,jdbcType=INTEGER}, 
+      #{license_plate,jdbcType=VARCHAR}, #{entry_time,jdbcType=TIMESTAMP}, #{park_type,jdbcType=SMALLINT}, 
+      #{vehicle_type_id,jdbcType=INTEGER}, #{sentry_user_id,jdbcType=INTEGER}, #{entry_pic_id,jdbcType=BIGINT}, 
+      #{exit_pic_id,jdbcType=BIGINT}, #{is_payment,jdbcType=SMALLINT}, #{pay_time,jdbcType=TIMESTAMP}, 
+      #{real_charges,jdbcType=DOUBLE}, #{due_charges,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiya.bean.TabOnhandVehicle" >
+    insert into tab_onhand_vehicle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="onhand_vehicle_id != null" >
+        onhand_vehicle_id,
+      </if>
+      <if test="access_id != null" >
+        access_id,
+      </if>
+      <if test="pre_license_plate_id != null" >
+        pre_license_plate_id,
+      </if>
+      <if test="license_plate != null" >
+        license_plate,
+      </if>
+      <if test="entry_time != null" >
+        entry_time,
+      </if>
+      <if test="park_type != null" >
+        park_type,
+      </if>
+      <if test="vehicle_type_id != null" >
+        vehicle_type_id,
+      </if>
+      <if test="sentry_user_id != null" >
+        sentry_user_id,
+      </if>
+      <if test="entry_pic_id != null" >
+        entry_pic_id,
+      </if>
+      <if test="exit_pic_id != null" >
+        exit_pic_id,
+      </if>
+      <if test="is_payment != null" >
+        is_payment,
+      </if>
+      <if test="pay_time != null" >
+        pay_time,
+      </if>
+      <if test="real_charges != null" >
+        real_charges,
+      </if>
+      <if test="due_charges != null" >
+        due_charges,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="onhand_vehicle_id != null" >
+        #{onhand_vehicle_id,jdbcType=BIGINT},
+      </if>
+      <if test="access_id != null" >
+        #{access_id,jdbcType=INTEGER},
+      </if>
+      <if test="pre_license_plate_id != null" >
+        #{pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="license_plate != null" >
+        #{license_plate,jdbcType=VARCHAR},
+      </if>
+      <if test="entry_time != null" >
+        #{entry_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="park_type != null" >
+        #{park_type,jdbcType=SMALLINT},
+      </if>
+      <if test="vehicle_type_id != null" >
+        #{vehicle_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="sentry_user_id != null" >
+        #{sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="entry_pic_id != null" >
+        #{entry_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="exit_pic_id != null" >
+        #{exit_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_payment != null" >
+        #{is_payment,jdbcType=SMALLINT},
+      </if>
+      <if test="pay_time != null" >
+        #{pay_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="real_charges != null" >
+        #{real_charges,jdbcType=DOUBLE},
+      </if>
+      <if test="due_charges != null" >
+        #{due_charges,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yiya.bean.TabOnhandVehicleExample" resultType="java.lang.Integer" >
+    select count(*) from tab_onhand_vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tab_onhand_vehicle
+    <set >
+      <if test="record.onhand_vehicle_id != null" >
+        onhand_vehicle_id = #{record.onhand_vehicle_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.access_id != null" >
+        access_id = #{record.access_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.pre_license_plate_id != null" >
+        pre_license_plate_id = #{record.pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.license_plate != null" >
+        license_plate = #{record.license_plate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entry_time != null" >
+        entry_time = #{record.entry_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.park_type != null" >
+        park_type = #{record.park_type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.vehicle_type_id != null" >
+        vehicle_type_id = #{record.vehicle_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.sentry_user_id != null" >
+        sentry_user_id = #{record.sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.entry_pic_id != null" >
+        entry_pic_id = #{record.entry_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.exit_pic_id != null" >
+        exit_pic_id = #{record.exit_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.is_payment != null" >
+        is_payment = #{record.is_payment,jdbcType=SMALLINT},
+      </if>
+      <if test="record.pay_time != null" >
+        pay_time = #{record.pay_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.real_charges != null" >
+        real_charges = #{record.real_charges,jdbcType=DOUBLE},
+      </if>
+      <if test="record.due_charges != null" >
+        due_charges = #{record.due_charges,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tab_onhand_vehicle
+    set onhand_vehicle_id = #{record.onhand_vehicle_id,jdbcType=BIGINT},
+      access_id = #{record.access_id,jdbcType=INTEGER},
+      pre_license_plate_id = #{record.pre_license_plate_id,jdbcType=INTEGER},
+      license_plate = #{record.license_plate,jdbcType=VARCHAR},
+      entry_time = #{record.entry_time,jdbcType=TIMESTAMP},
+      park_type = #{record.park_type,jdbcType=SMALLINT},
+      vehicle_type_id = #{record.vehicle_type_id,jdbcType=INTEGER},
+      sentry_user_id = #{record.sentry_user_id,jdbcType=INTEGER},
+      entry_pic_id = #{record.entry_pic_id,jdbcType=BIGINT},
+      exit_pic_id = #{record.exit_pic_id,jdbcType=BIGINT},
+      is_payment = #{record.is_payment,jdbcType=SMALLINT},
+      pay_time = #{record.pay_time,jdbcType=TIMESTAMP},
+      real_charges = #{record.real_charges,jdbcType=DOUBLE},
+      due_charges = #{record.due_charges,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiya.bean.TabOnhandVehicle" >
+    update tab_onhand_vehicle
+    <set >
+      <if test="access_id != null" >
+        access_id = #{access_id,jdbcType=INTEGER},
+      </if>
+      <if test="pre_license_plate_id != null" >
+        pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="license_plate != null" >
+        license_plate = #{license_plate,jdbcType=VARCHAR},
+      </if>
+      <if test="entry_time != null" >
+        entry_time = #{entry_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="park_type != null" >
+        park_type = #{park_type,jdbcType=SMALLINT},
+      </if>
+      <if test="vehicle_type_id != null" >
+        vehicle_type_id = #{vehicle_type_id,jdbcType=INTEGER},
+      </if>
+      <if test="sentry_user_id != null" >
+        sentry_user_id = #{sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="entry_pic_id != null" >
+        entry_pic_id = #{entry_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="exit_pic_id != null" >
+        exit_pic_id = #{exit_pic_id,jdbcType=BIGINT},
+      </if>
+      <if test="is_payment != null" >
+        is_payment = #{is_payment,jdbcType=SMALLINT},
+      </if>
+      <if test="pay_time != null" >
+        pay_time = #{pay_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="real_charges != null" >
+        real_charges = #{real_charges,jdbcType=DOUBLE},
+      </if>
+      <if test="due_charges != null" >
+        due_charges = #{due_charges,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where onhand_vehicle_id = #{onhand_vehicle_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiya.bean.TabOnhandVehicle" >
+    update tab_onhand_vehicle
+    set access_id = #{access_id,jdbcType=INTEGER},
+      pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER},
+      license_plate = #{license_plate,jdbcType=VARCHAR},
+      entry_time = #{entry_time,jdbcType=TIMESTAMP},
+      park_type = #{park_type,jdbcType=SMALLINT},
+      vehicle_type_id = #{vehicle_type_id,jdbcType=INTEGER},
+      sentry_user_id = #{sentry_user_id,jdbcType=INTEGER},
+      entry_pic_id = #{entry_pic_id,jdbcType=BIGINT},
+      exit_pic_id = #{exit_pic_id,jdbcType=BIGINT},
+      is_payment = #{is_payment,jdbcType=SMALLINT},
+      pay_time = #{pay_time,jdbcType=TIMESTAMP},
+      real_charges = #{real_charges,jdbcType=DOUBLE},
+      due_charges = #{due_charges,jdbcType=DOUBLE}
+    where onhand_vehicle_id = #{onhand_vehicle_id,jdbcType=BIGINT}
+  </update>
+</mapper>

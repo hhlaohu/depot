@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiya.mapper.TabSentryUserMapper" >
+  <resultMap id="BaseResultMap" type="com.yiya.bean.TabSentryUser" >
+    <id column="sentry_user_id" property="sentry_user_id" jdbcType="INTEGER" />
+    <result column="user_name" property="user_name" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="user_pwd" jdbcType="VARCHAR" />
+    <result column="real_name" property="real_name" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="crete_time" property="crete_time" jdbcType="TIMESTAMP" />
+    <result column="login_time" property="login_time" jdbcType="TIMESTAMP" />
+    <result column="login_cnt" property="login_cnt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sentry_user_id, user_name, user_pwd, real_name, state, crete_time, login_time, login_cnt
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiya.bean.TabSentryUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tab_sentry_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tab_sentry_user
+    where sentry_user_id = #{sentry_user_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tab_sentry_user
+    where sentry_user_id = #{sentry_user_id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yiya.bean.TabSentryUserExample" >
+    delete from tab_sentry_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yiya.bean.TabSentryUser" >
+    insert into tab_sentry_user (sentry_user_id, user_name, user_pwd, 
+      real_name, state, crete_time, 
+      login_time, login_cnt)
+    values (#{sentry_user_id,jdbcType=INTEGER}, #{user_name,jdbcType=VARCHAR}, #{user_pwd,jdbcType=VARCHAR}, 
+      #{real_name,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, #{crete_time,jdbcType=TIMESTAMP}, 
+      #{login_time,jdbcType=TIMESTAMP}, #{login_cnt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiya.bean.TabSentryUser" >
+    insert into tab_sentry_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sentry_user_id != null" >
+        sentry_user_id,
+      </if>
+      <if test="user_name != null" >
+        user_name,
+      </if>
+      <if test="user_pwd != null" >
+        user_pwd,
+      </if>
+      <if test="real_name != null" >
+        real_name,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="crete_time != null" >
+        crete_time,
+      </if>
+      <if test="login_time != null" >
+        login_time,
+      </if>
+      <if test="login_cnt != null" >
+        login_cnt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sentry_user_id != null" >
+        #{sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="user_name != null" >
+        #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_pwd != null" >
+        #{user_pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="real_name != null" >
+        #{real_name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="crete_time != null" >
+        #{crete_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="login_time != null" >
+        #{login_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="login_cnt != null" >
+        #{login_cnt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yiya.bean.TabSentryUserExample" resultType="java.lang.Integer" >
+    select count(*) from tab_sentry_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tab_sentry_user
+    <set >
+      <if test="record.sentry_user_id != null" >
+        sentry_user_id = #{record.sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.user_name != null" >
+        user_name = #{record.user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user_pwd != null" >
+        user_pwd = #{record.user_pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.real_name != null" >
+        real_name = #{record.real_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=SMALLINT},
+      </if>
+      <if test="record.crete_time != null" >
+        crete_time = #{record.crete_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.login_time != null" >
+        login_time = #{record.login_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.login_cnt != null" >
+        login_cnt = #{record.login_cnt,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tab_sentry_user
+    set sentry_user_id = #{record.sentry_user_id,jdbcType=INTEGER},
+      user_name = #{record.user_name,jdbcType=VARCHAR},
+      user_pwd = #{record.user_pwd,jdbcType=VARCHAR},
+      real_name = #{record.real_name,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=SMALLINT},
+      crete_time = #{record.crete_time,jdbcType=TIMESTAMP},
+      login_time = #{record.login_time,jdbcType=TIMESTAMP},
+      login_cnt = #{record.login_cnt,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiya.bean.TabSentryUser" >
+    update tab_sentry_user
+    <set >
+      <if test="user_name != null" >
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_pwd != null" >
+        user_pwd = #{user_pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="real_name != null" >
+        real_name = #{real_name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="crete_time != null" >
+        crete_time = #{crete_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="login_time != null" >
+        login_time = #{login_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="login_cnt != null" >
+        login_cnt = #{login_cnt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sentry_user_id = #{sentry_user_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiya.bean.TabSentryUser" >
+    update tab_sentry_user
+    set user_name = #{user_name,jdbcType=VARCHAR},
+      user_pwd = #{user_pwd,jdbcType=VARCHAR},
+      real_name = #{real_name,jdbcType=VARCHAR},
+      state = #{state,jdbcType=SMALLINT},
+      crete_time = #{crete_time,jdbcType=TIMESTAMP},
+      login_time = #{login_time,jdbcType=TIMESTAMP},
+      login_cnt = #{login_cnt,jdbcType=INTEGER}
+    where sentry_user_id = #{sentry_user_id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiya.mapper.TabAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.yiya.bean.TabArea" >
+    <id column="area_id" property="area_id" jdbcType="INTEGER" />
+    <result column="area_name" property="area_name" jdbcType="VARCHAR" />
+    <result column="area_parent_id" property="area_parent_id" jdbcType="INTEGER" />
+    <result column="area_sort" property="area_sort" jdbcType="TINYINT" />
+    <result column="area_deep" property="area_deep" jdbcType="BIT" />
+    <result column="tesu_deleted" property="tesu_deleted" jdbcType="BIT" />
+    <result column="tesu_description" property="tesu_description" jdbcType="VARCHAR" />
+    <result column="tesu_created" property="tesu_created" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    area_id, area_name, area_parent_id, area_sort, area_deep, tesu_deleted, tesu_description, 
+    tesu_created
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiya.bean.TabAreaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tab_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tab_area
+    where area_id = #{area_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tab_area
+    where area_id = #{area_id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yiya.bean.TabAreaExample" >
+    delete from tab_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yiya.bean.TabArea" >
+    insert into tab_area (area_id, area_name, area_parent_id, 
+      area_sort, area_deep, tesu_deleted, 
+      tesu_description, tesu_created)
+    values (#{area_id,jdbcType=INTEGER}, #{area_name,jdbcType=VARCHAR}, #{area_parent_id,jdbcType=INTEGER}, 
+      #{area_sort,jdbcType=TINYINT}, #{area_deep,jdbcType=BIT}, #{tesu_deleted,jdbcType=BIT}, 
+      #{tesu_description,jdbcType=VARCHAR}, #{tesu_created,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiya.bean.TabArea" >
+    insert into tab_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="area_id != null" >
+        area_id,
+      </if>
+      <if test="area_name != null" >
+        area_name,
+      </if>
+      <if test="area_parent_id != null" >
+        area_parent_id,
+      </if>
+      <if test="area_sort != null" >
+        area_sort,
+      </if>
+      <if test="area_deep != null" >
+        area_deep,
+      </if>
+      <if test="tesu_deleted != null" >
+        tesu_deleted,
+      </if>
+      <if test="tesu_description != null" >
+        tesu_description,
+      </if>
+      <if test="tesu_created != null" >
+        tesu_created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="area_id != null" >
+        #{area_id,jdbcType=INTEGER},
+      </if>
+      <if test="area_name != null" >
+        #{area_name,jdbcType=VARCHAR},
+      </if>
+      <if test="area_parent_id != null" >
+        #{area_parent_id,jdbcType=INTEGER},
+      </if>
+      <if test="area_sort != null" >
+        #{area_sort,jdbcType=TINYINT},
+      </if>
+      <if test="area_deep != null" >
+        #{area_deep,jdbcType=BIT},
+      </if>
+      <if test="tesu_deleted != null" >
+        #{tesu_deleted,jdbcType=BIT},
+      </if>
+      <if test="tesu_description != null" >
+        #{tesu_description,jdbcType=VARCHAR},
+      </if>
+      <if test="tesu_created != null" >
+        #{tesu_created,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yiya.bean.TabAreaExample" resultType="java.lang.Integer" >
+    select count(*) from tab_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tab_area
+    <set >
+      <if test="record.area_id != null" >
+        area_id = #{record.area_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.area_name != null" >
+        area_name = #{record.area_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area_parent_id != null" >
+        area_parent_id = #{record.area_parent_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.area_sort != null" >
+        area_sort = #{record.area_sort,jdbcType=TINYINT},
+      </if>
+      <if test="record.area_deep != null" >
+        area_deep = #{record.area_deep,jdbcType=BIT},
+      </if>
+      <if test="record.tesu_deleted != null" >
+        tesu_deleted = #{record.tesu_deleted,jdbcType=BIT},
+      </if>
+      <if test="record.tesu_description != null" >
+        tesu_description = #{record.tesu_description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tesu_created != null" >
+        tesu_created = #{record.tesu_created,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tab_area
+    set area_id = #{record.area_id,jdbcType=INTEGER},
+      area_name = #{record.area_name,jdbcType=VARCHAR},
+      area_parent_id = #{record.area_parent_id,jdbcType=INTEGER},
+      area_sort = #{record.area_sort,jdbcType=TINYINT},
+      area_deep = #{record.area_deep,jdbcType=BIT},
+      tesu_deleted = #{record.tesu_deleted,jdbcType=BIT},
+      tesu_description = #{record.tesu_description,jdbcType=VARCHAR},
+      tesu_created = #{record.tesu_created,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiya.bean.TabArea" >
+    update tab_area
+    <set >
+      <if test="area_name != null" >
+        area_name = #{area_name,jdbcType=VARCHAR},
+      </if>
+      <if test="area_parent_id != null" >
+        area_parent_id = #{area_parent_id,jdbcType=INTEGER},
+      </if>
+      <if test="area_sort != null" >
+        area_sort = #{area_sort,jdbcType=TINYINT},
+      </if>
+      <if test="area_deep != null" >
+        area_deep = #{area_deep,jdbcType=BIT},
+      </if>
+      <if test="tesu_deleted != null" >
+        tesu_deleted = #{tesu_deleted,jdbcType=BIT},
+      </if>
+      <if test="tesu_description != null" >
+        tesu_description = #{tesu_description,jdbcType=VARCHAR},
+      </if>
+      <if test="tesu_created != null" >
+        tesu_created = #{tesu_created,jdbcType=INTEGER},
+      </if>
+    </set>
+    where area_id = #{area_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiya.bean.TabArea" >
+    update tab_area
+    set area_name = #{area_name,jdbcType=VARCHAR},
+      area_parent_id = #{area_parent_id,jdbcType=INTEGER},
+      area_sort = #{area_sort,jdbcType=TINYINT},
+      area_deep = #{area_deep,jdbcType=BIT},
+      tesu_deleted = #{tesu_deleted,jdbcType=BIT},
+      tesu_description = #{tesu_description,jdbcType=VARCHAR},
+      tesu_created = #{tesu_created,jdbcType=INTEGER}
+    where area_id = #{area_id,jdbcType=INTEGER}
+  </update>
+</mapper>

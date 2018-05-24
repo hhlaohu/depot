@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiya.mapper.TabPassagewayRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.yiya.bean.TabPassagewayRecord" >
+    <id column="passageway_record_id" property="passageway_record_id" jdbcType="BIGINT" />
+    <result column="passageway_type" property="passageway_type" jdbcType="SMALLINT" />
+    <result column="access_id" property="access_id" jdbcType="INTEGER" />
+    <result column="access_type" property="access_type" jdbcType="SMALLINT" />
+    <result column="access_property" property="access_property" jdbcType="SMALLINT" />
+    <result column="pre_license_plate_id" property="pre_license_plate_id" jdbcType="INTEGER" />
+    <result column="license_plate" property="license_plate" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="entry_type" property="entry_type" jdbcType="SMALLINT" />
+    <result column="is_succeed" property="is_succeed" jdbcType="SMALLINT" />
+    <result column="failure_reason" property="failure_reason" jdbcType="VARCHAR" />
+    <result column="sentry_user_id" property="sentry_user_id" jdbcType="INTEGER" />
+    <result column="dev_uid" property="dev_uid" jdbcType="INTEGER" />
+    <result column="park_type" property="park_type" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    passageway_record_id, passageway_type, access_id, access_type, access_property, pre_license_plate_id, 
+    license_plate, create_time, entry_type, is_succeed, failure_reason, sentry_user_id, 
+    dev_uid, park_type
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiya.bean.TabPassagewayRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tab_passageway_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tab_passageway_record
+    where passageway_record_id = #{passageway_record_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tab_passageway_record
+    where passageway_record_id = #{passageway_record_id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yiya.bean.TabPassagewayRecordExample" >
+    delete from tab_passageway_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yiya.bean.TabPassagewayRecord" >
+    insert into tab_passageway_record (passageway_record_id, passageway_type, 
+      access_id, access_type, access_property, 
+      pre_license_plate_id, license_plate, create_time, 
+      entry_type, is_succeed, failure_reason, 
+      sentry_user_id, dev_uid, park_type
+      )
+    values (#{passageway_record_id,jdbcType=BIGINT}, #{passageway_type,jdbcType=SMALLINT}, 
+      #{access_id,jdbcType=INTEGER}, #{access_type,jdbcType=SMALLINT}, #{access_property,jdbcType=SMALLINT}, 
+      #{pre_license_plate_id,jdbcType=INTEGER}, #{license_plate,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{entry_type,jdbcType=SMALLINT}, #{is_succeed,jdbcType=SMALLINT}, #{failure_reason,jdbcType=VARCHAR}, 
+      #{sentry_user_id,jdbcType=INTEGER}, #{dev_uid,jdbcType=INTEGER}, #{park_type,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiya.bean.TabPassagewayRecord" >
+    insert into tab_passageway_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="passageway_record_id != null" >
+        passageway_record_id,
+      </if>
+      <if test="passageway_type != null" >
+        passageway_type,
+      </if>
+      <if test="access_id != null" >
+        access_id,
+      </if>
+      <if test="access_type != null" >
+        access_type,
+      </if>
+      <if test="access_property != null" >
+        access_property,
+      </if>
+      <if test="pre_license_plate_id != null" >
+        pre_license_plate_id,
+      </if>
+      <if test="license_plate != null" >
+        license_plate,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="entry_type != null" >
+        entry_type,
+      </if>
+      <if test="is_succeed != null" >
+        is_succeed,
+      </if>
+      <if test="failure_reason != null" >
+        failure_reason,
+      </if>
+      <if test="sentry_user_id != null" >
+        sentry_user_id,
+      </if>
+      <if test="dev_uid != null" >
+        dev_uid,
+      </if>
+      <if test="park_type != null" >
+        park_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="passageway_record_id != null" >
+        #{passageway_record_id,jdbcType=BIGINT},
+      </if>
+      <if test="passageway_type != null" >
+        #{passageway_type,jdbcType=SMALLINT},
+      </if>
+      <if test="access_id != null" >
+        #{access_id,jdbcType=INTEGER},
+      </if>
+      <if test="access_type != null" >
+        #{access_type,jdbcType=SMALLINT},
+      </if>
+      <if test="access_property != null" >
+        #{access_property,jdbcType=SMALLINT},
+      </if>
+      <if test="pre_license_plate_id != null" >
+        #{pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="license_plate != null" >
+        #{license_plate,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entry_type != null" >
+        #{entry_type,jdbcType=SMALLINT},
+      </if>
+      <if test="is_succeed != null" >
+        #{is_succeed,jdbcType=SMALLINT},
+      </if>
+      <if test="failure_reason != null" >
+        #{failure_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="sentry_user_id != null" >
+        #{sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="dev_uid != null" >
+        #{dev_uid,jdbcType=INTEGER},
+      </if>
+      <if test="park_type != null" >
+        #{park_type,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yiya.bean.TabPassagewayRecordExample" resultType="java.lang.Integer" >
+    select count(*) from tab_passageway_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tab_passageway_record
+    <set >
+      <if test="record.passageway_record_id != null" >
+        passageway_record_id = #{record.passageway_record_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.passageway_type != null" >
+        passageway_type = #{record.passageway_type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.access_id != null" >
+        access_id = #{record.access_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.access_type != null" >
+        access_type = #{record.access_type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.access_property != null" >
+        access_property = #{record.access_property,jdbcType=SMALLINT},
+      </if>
+      <if test="record.pre_license_plate_id != null" >
+        pre_license_plate_id = #{record.pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.license_plate != null" >
+        license_plate = #{record.license_plate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null" >
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.entry_type != null" >
+        entry_type = #{record.entry_type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.is_succeed != null" >
+        is_succeed = #{record.is_succeed,jdbcType=SMALLINT},
+      </if>
+      <if test="record.failure_reason != null" >
+        failure_reason = #{record.failure_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sentry_user_id != null" >
+        sentry_user_id = #{record.sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.dev_uid != null" >
+        dev_uid = #{record.dev_uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.park_type != null" >
+        park_type = #{record.park_type,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tab_passageway_record
+    set passageway_record_id = #{record.passageway_record_id,jdbcType=BIGINT},
+      passageway_type = #{record.passageway_type,jdbcType=SMALLINT},
+      access_id = #{record.access_id,jdbcType=INTEGER},
+      access_type = #{record.access_type,jdbcType=SMALLINT},
+      access_property = #{record.access_property,jdbcType=SMALLINT},
+      pre_license_plate_id = #{record.pre_license_plate_id,jdbcType=INTEGER},
+      license_plate = #{record.license_plate,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      entry_type = #{record.entry_type,jdbcType=SMALLINT},
+      is_succeed = #{record.is_succeed,jdbcType=SMALLINT},
+      failure_reason = #{record.failure_reason,jdbcType=VARCHAR},
+      sentry_user_id = #{record.sentry_user_id,jdbcType=INTEGER},
+      dev_uid = #{record.dev_uid,jdbcType=INTEGER},
+      park_type = #{record.park_type,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiya.bean.TabPassagewayRecord" >
+    update tab_passageway_record
+    <set >
+      <if test="passageway_type != null" >
+        passageway_type = #{passageway_type,jdbcType=SMALLINT},
+      </if>
+      <if test="access_id != null" >
+        access_id = #{access_id,jdbcType=INTEGER},
+      </if>
+      <if test="access_type != null" >
+        access_type = #{access_type,jdbcType=SMALLINT},
+      </if>
+      <if test="access_property != null" >
+        access_property = #{access_property,jdbcType=SMALLINT},
+      </if>
+      <if test="pre_license_plate_id != null" >
+        pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER},
+      </if>
+      <if test="license_plate != null" >
+        license_plate = #{license_plate,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entry_type != null" >
+        entry_type = #{entry_type,jdbcType=SMALLINT},
+      </if>
+      <if test="is_succeed != null" >
+        is_succeed = #{is_succeed,jdbcType=SMALLINT},
+      </if>
+      <if test="failure_reason != null" >
+        failure_reason = #{failure_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="sentry_user_id != null" >
+        sentry_user_id = #{sentry_user_id,jdbcType=INTEGER},
+      </if>
+      <if test="dev_uid != null" >
+        dev_uid = #{dev_uid,jdbcType=INTEGER},
+      </if>
+      <if test="park_type != null" >
+        park_type = #{park_type,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where passageway_record_id = #{passageway_record_id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiya.bean.TabPassagewayRecord" >
+    update tab_passageway_record
+    set passageway_type = #{passageway_type,jdbcType=SMALLINT},
+      access_id = #{access_id,jdbcType=INTEGER},
+      access_type = #{access_type,jdbcType=SMALLINT},
+      access_property = #{access_property,jdbcType=SMALLINT},
+      pre_license_plate_id = #{pre_license_plate_id,jdbcType=INTEGER},
+      license_plate = #{license_plate,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      entry_type = #{entry_type,jdbcType=SMALLINT},
+      is_succeed = #{is_succeed,jdbcType=SMALLINT},
+      failure_reason = #{failure_reason,jdbcType=VARCHAR},
+      sentry_user_id = #{sentry_user_id,jdbcType=INTEGER},
+      dev_uid = #{dev_uid,jdbcType=INTEGER},
+      park_type = #{park_type,jdbcType=SMALLINT}
+    where passageway_record_id = #{passageway_record_id,jdbcType=BIGINT}
+  </update>
+</mapper>
