@@ -1,0 +1,31 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+*/target
+depot.iml
+depot_api/depot_api.iml
+depot_api/src/main/resources/
+depot_api/src/test/
+depot_api/target/
+depot_common/depot_common.iml
+depot_common/src/main/resources/
+depot_common/src/test/
+depot_common/target/
+depot_dao/depot_dao.iml
+depot_dao/src/test/
+depot_dao/target/
+depot_service/depot_service.iml
+depot_service/src/main/resources/
+depot_service/src/test/
+depot_service/target/
+depot_web/depot_web.iml
+depot_web/src/main/resources/resource/
+depot_web/src/main/webapp/web/
+depot_web/target/
+src/
