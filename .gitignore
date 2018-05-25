@@ -19,3 +19,4 @@ depot_service/depot_service.iml
 depot_service/target/
 depot_web/depot_web.iml
 depot_web/target/
+/depot_common/depot_common.iml

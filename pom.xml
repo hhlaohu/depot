@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>depot_common</module>
-        <module>depot_dao</module>
         <module>depot_api</module>
         <module>depot_service</module>
         <module>depot_web</module>

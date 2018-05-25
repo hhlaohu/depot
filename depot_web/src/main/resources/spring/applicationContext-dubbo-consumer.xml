@@ -12,7 +12,7 @@
     <dubbo:registry protocol="zookeeper" address="zookeeper://localhost:2181"/>
 
     <!-- 在场车辆管理 -->
-    <dubbo:reference id="tabOnhandVehicleService" interface="com.yiya.service.TabOnhandVehicleService" mock="true"
+    <dubbo:reference id="tabOnhandVehicleService" interface="com.yiya.api.service.TabOnhandVehicleService"
                      retries="3" check="false" init="true"/>
 
 </beans>

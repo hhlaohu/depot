@@ -27,8 +27,6 @@ public class TabPassagewayRecord {
 
     private Integer sentry_user_id;
 
-    private Integer dev_uid;
-
     private Short park_type;
 
     public Long getPassageway_record_id() {
@@ -125,14 +123,6 @@ public class TabPassagewayRecord {
 
     public void setSentry_user_id(Integer sentry_user_id) {
         this.sentry_user_id = sentry_user_id;
-    }
-
-    public Integer getDev_uid() {
-        return dev_uid;
-    }
-
-    public void setDev_uid(Integer dev_uid) {
-        this.dev_uid = dev_uid;
     }
 
     public Short getPark_type() {

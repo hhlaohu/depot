@@ -1,14 +1,12 @@
 package com.yiya.web.service;
 
-import com.yiya.bean.TabOnhandVehicle;
-
-import java.util.List;
+import com.yiya.api.bean.TabOnhandVehicleDTO;
 
 /**
  * Created by laohu on 2018/5/23.
  */
 public interface DepotService {
 
-    List<TabOnhandVehicle> list();
+    TabOnhandVehicleDTO findByid(Long id);
 
 }

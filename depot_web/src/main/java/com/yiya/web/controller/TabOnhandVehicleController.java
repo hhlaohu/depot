@@ -1,6 +1,6 @@
 package com.yiya.web.controller;
 
-import com.yiya.common.base.BaseController;
+import com.yiya.api.bean.TabOnhandVehicleDTO;
 import com.yiya.web.service.DepotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
-public class TabOnhandVehicleController extends BaseController {
+public class TabOnhandVehicleController{
 
     @Autowired
     DepotService depotService;
 
     @ResponseBody
-    @RequestMapping("list")
-    public void list() {
-        depotService.list();
+    @RequestMapping("getId")
+    public TabOnhandVehicleDTO list(Long id) {
+        return depotService.findByid(id);
     }
 
 }

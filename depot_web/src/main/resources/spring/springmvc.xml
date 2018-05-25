@@ -32,6 +32,6 @@
 	</bean>
 	
 	<!-- 属性文件不能跨容器，要在controller中也能被访问到，也需要配置 -->
-	<context:property-placeholder location="classpath:resource/*.properties" />
+	<!--<context:property-placeholder location="classpath:resource/*.properties" />-->
 
 </beans>

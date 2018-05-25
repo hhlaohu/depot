@@ -845,66 +845,6 @@ public class TabPassagewayRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andDev_uidIsNull() {
-            addCriterion("dev_uid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidIsNotNull() {
-            addCriterion("dev_uid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidEqualTo(Integer value) {
-            addCriterion("dev_uid =", value, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidNotEqualTo(Integer value) {
-            addCriterion("dev_uid <>", value, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidGreaterThan(Integer value) {
-            addCriterion("dev_uid >", value, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("dev_uid >=", value, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidLessThan(Integer value) {
-            addCriterion("dev_uid <", value, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidLessThanOrEqualTo(Integer value) {
-            addCriterion("dev_uid <=", value, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidIn(List<Integer> values) {
-            addCriterion("dev_uid in", values, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidNotIn(List<Integer> values) {
-            addCriterion("dev_uid not in", values, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidBetween(Integer value1, Integer value2) {
-            addCriterion("dev_uid between", value1, value2, "dev_uid");
-            return (Criteria) this;
-        }
-
-        public Criteria andDev_uidNotBetween(Integer value1, Integer value2) {
-            addCriterion("dev_uid not between", value1, value2, "dev_uid");
-            return (Criteria) this;
-        }
-
         public Criteria andPark_typeIsNull() {
             addCriterion("park_type is null");
             return (Criteria) this;

@@ -5,10 +5,10 @@
 
 <generatorConfiguration>
     <!--这里使用的是数据库properties配置文件与当前配置文件于同级目录-->
-    <properties resource="jdbc.properties"/>
+    <properties resource="resource/db.properties"/>
 
     <!--指定特定数据库的jdbc驱动jar包的位置-->
-    <classPathEntry location="${db.driverLocation}"/>
+    <classPathEntry location="${jdbc.driverLocation}"/>
 
     <context id="testTables" targetRuntime="MyBatis3">
         <!-- optional，旨在创建class时，对注释进行控制 -->
@@ -19,10 +19,10 @@
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection
-                driverClass="${db.driverClassName}"
-                connectionURL="${db.url}"
-                userId="${db.username}"
-                password="${db.password}">
+                driverClass="${jdbc.driver}"
+                connectionURL="${jdbc.url}"
+                userId="${jdbc.username}"
+                password="${jdbc.password}">
         </jdbcConnection>
 
 
@@ -41,8 +41,8 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <!--<sqlMapGenerator targetPackage="com.yiya.mybatis" targetProject="./src/main/java">-->
-        <sqlMapGenerator targetPackage="mybatis" targetProject="./src/main/resources">
+        <sqlMapGenerator targetPackage="com.yiya.mybatis" targetProject="./src/main/java">
+        <!--<sqlMapGenerator targetPackage="mybatis" targetProject="./src/main/resources">-->
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
