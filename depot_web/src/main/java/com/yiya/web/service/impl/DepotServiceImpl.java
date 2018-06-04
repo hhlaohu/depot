@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by laohu on 2018/5/23.
+ * @name: DepotServiceImpl
+ * @description:
+ * @author: huzhihong
+ * @email: hh_laohu@163.com
+ * @date: 2018/5/28 上午9:36
  */
-@Service("depotService")
+@Service(value = "depotService")
 public class DepotServiceImpl implements DepotService {
 
     @Autowired

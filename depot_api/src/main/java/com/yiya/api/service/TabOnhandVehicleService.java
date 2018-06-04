@@ -2,9 +2,12 @@ package com.yiya.api.service;
 
 
 import com.yiya.api.bean.TabOnhandVehicleDTO;
-
 /**
- * Created by laohu on 2018/5/23.
+ * @name: TabOnhandVehicleService
+ * @description: 在场车辆服务
+ * @author: huzhihong
+ * @email: hh_laohu@163.com
+ * @date: 2018/5/28 上午9:39
  */
 public interface TabOnhandVehicleService {
 

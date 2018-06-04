@@ -3,7 +3,11 @@ package com.yiya.web.service;
 import com.yiya.api.bean.TabOnhandVehicleDTO;
 
 /**
- * Created by laohu on 2018/5/23.
+ * @name: DepotService
+ * @description:
+ * @author: huzhihong
+ * @email: hh_laohu@163.com
+ * @date: 2018/5/28 上午9:36
  */
 public interface DepotService {
 
